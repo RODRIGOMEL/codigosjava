@@ -1,0 +1,156 @@
+package com.mycompany.provaj;
+
+ 
+
+import javax.swing.*;
+import javax.swing.text.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.text.*;
+
+public class ProvaJ extends JFrame {
+    JLabel rotulocep, rotulotel, rotulocpf, rotulodata, rotulonome, rotuloendereco, exibir, exibir2, exibir3, exibir4, exibir5, exibir6;
+    JTextField nome, endereco;
+    JFormattedTextField cep, tel, cpf, data;
+    MaskFormatter mascaracep, mascaratel, mascaracpf, mascaradata;
+    JButton mostrar, sair;
+
+    public ProvaJ() {
+        super("Exemplo com FormattedTextField");
+        Container tela = getContentPane();
+        setLayout(null);
+        rotulocpf = new JLabel("CPF: ");
+        rotulonome = new JLabel("Nome: ");
+        rotulodata = new JLabel("Data Nasc: ");
+        rotuloendereco = new JLabel("Endereço: ");
+        rotulocep = new JLabel("CEP: ");
+        rotulotel = new JLabel("Telefone: ");
+        nome = new JTextField("");
+        endereco = new JTextField("");
+        sair = new JButton("Sair");
+        mostrar = new JButton("Mostrar");
+        exibir = new JLabel();
+        exibir2 = new JLabel();
+        exibir3 = new JLabel();
+        exibir4 = new JLabel();
+        exibir5 = new JLabel();
+        exibir6 = new JLabel();
+
+        rotulocpf.setBounds(50, 40, 100, 20);
+        rotulonome.setBounds(50, 80, 100, 20);
+        rotulodata.setBounds(50, 120, 100, 20);
+        rotuloendereco.setBounds(50, 160, 100, 20);
+        rotulocep.setBounds(50, 200, 100, 20);
+        rotulotel.setBounds(50, 240, 100, 20);
+        exibir.setBounds(320, 270, 250, 20);
+        exibir2.setBounds(320, 290, 250, 20);
+        exibir3.setBounds(320, 310, 250, 20);
+        exibir4.setBounds(320, 330, 250, 20);
+        exibir5.setBounds(320, 350, 250, 20);
+        exibir6.setBounds(320, 370, 250, 20);
+
+        try {
+            mascaracpf = new MaskFormatter("###.###.###-##");
+            mascaradata = new MaskFormatter("##/##/####");
+            mascaracep = new MaskFormatter("#####-###");
+            mascaratel = new MaskFormatter("(##)#####-####");
+
+            mascaracpf.setPlaceholderCharacter('_');
+            mascaradata.setPlaceholderCharacter('_');
+            mascaracep.setPlaceholderCharacter('_');
+            mascaratel.setPlaceholderCharacter('_');
+        } catch (ParseException excp) {}
+
+        cpf = new JFormattedTextField(mascaracpf);
+        data = new JFormattedTextField(mascaradata);
+        cep = new JFormattedTextField(mascaracep);
+        tel = new JFormattedTextField(mascaratel);
+
+        cpf.setBounds(150, 40, 150, 20);
+        nome.setBounds(150, 80, 200, 20);
+        data.setBounds(150, 120, 100, 20);
+        endereco.setBounds(150, 160, 300, 20);
+        cep.setBounds(150, 200, 100, 20);
+        tel.setBounds(150, 240, 150, 20);
+
+        sair.setBounds(150, 290, 60, 20);
+
+        sair.addActionListener(
+ 
+                new ActionListener() {
+ 
+                    public void actionPerformed(ActionEvent e ) {
+ 
+                System.exit(0);
+ 
+                    }
+ 
+                }  
+ 
+        );
+
+
+        mostrar.setBounds(220, 290, 90, 20);
+
+        mostrar.addActionListener(
+ 
+                new ActionListener() {
+ 
+            public void actionPerformed(ActionEvent e) { 
+            String nome1 = nome.getText();
+            String endereco1 = endereco.getText();
+            String cpf1 = cpf.getText();
+            String data1 = data.getText();
+            String cep1 = cep.getText();
+            String tel1 = tel.getText();
+            exibir.setText("CPF: " + cpf1);
+            exibir2.setText("Nome: " + nome1);
+            exibir3.setText("Data Nasc: " + data1);
+            exibir4.setText("Endereço: " + endereco1);
+            exibir5.setText("CEP: " + cep1);
+            exibir6.setText("Telefone: " + tel1);
+            exibir.setVisible(true);
+            exibir2.setVisible(true);
+            exibir3.setVisible(true);
+            exibir4.setVisible(true);
+            exibir5.setVisible(true);
+            exibir6.setVisible(true);
+        }});
+
+        exibir.setVisible(false);
+        exibir2.setVisible(false);
+        exibir3.setVisible(false);
+        exibir4.setVisible(false);
+        exibir5.setVisible(false);
+        exibir6.setVisible(false);
+
+        tela.add(rotulocpf);
+        tela.add(rotulonome);
+        tela.add(rotulodata);
+        tela.add(rotuloendereco);
+        tela.add(rotulocep);
+        tela.add(rotulotel);
+        tela.add(exibir);
+        tela.add(exibir2);
+        tela.add(exibir3);
+        tela.add(exibir4);
+        tela.add(exibir5);
+        tela.add(exibir6);
+        tela.add(cpf);
+        tela.add(nome);
+        tela.add(data);
+        tela.add(endereco);
+        tela.add(cep);
+        tela.add(tel);
+        tela.add(sair);
+        tela.add(mostrar);
+
+        setSize(600, 450);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        ProvaJ app = new ProvaJ();
+        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+}
